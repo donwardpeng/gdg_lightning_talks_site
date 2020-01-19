@@ -72,11 +72,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // set the number of elements in the gridview crossaxis count
-    int gridViewCount = 3;
     var size = MediaQuery.of(context).size;
+    var large_screen = size.width > 600;
+    // set the number of elements in the gridview crossaxis count
+    int gridViewCount = large_screen ? 3 : 1;
     //make the cards 1/2 the height of the view
-    final double cardHeight = size.height / 1.75;
+    final double cardHeight = large_screen ? size.height / 1.75 : size.height/2;
     //make the card the scaled to the width divided by the number of gridview elements across
     final double cardWidth = size.width / (gridViewCount + 1);
 
@@ -97,14 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             )
           ],
-          title: Text(widget.title),
+          title: Text(large_screen? widget.title : ''),
         ),
         body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
                   Widget>[
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Expanded(
+              large_screen ? Expanded(
                 flex: 3,
                 child: SizedBox(
                     width: size.width / 3,
@@ -125,17 +126,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                           image: AssetImage(
                                               'assets/gdg_windsor.png')))),
                             ])))),
-              ),
+              ) : Container(),
               Expanded(
                   flex: 6,
                   child: SizedBox(
                       width: 2 * size.width / 3,
-                      height: size.height / 2.5,
+                      height: large_screen? size.height / 2.5 : size.height / 1.3,
                       child: Padding(
                           padding: EdgeInsets.fromLTRB(0, 8, 24, 16),
                           child: Card(
                               color: Colors.white,
-                              child: Padding(
+                              child: Center(child: Padding(
                                 padding: EdgeInsets.fromLTRB(16, 16, 16, 12),
                                 child: RichText(
                                     text: TextSpan(
@@ -143,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         style: Theme.of(context)
                                             .textTheme
                                             .display1
-                                            .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+                                            .copyWith(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blueAccent),
                                         children: <TextSpan>[
                                       TextSpan(
                                           text: '\n\n' + eventDescription,
@@ -181,9 +182,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                               .textTheme
                                               .display1
                                               .copyWith(fontSize: 18)),
-                                    ])),
+                                    ]))),
                               )))))
-            ]),
+              ]),
             Padding(
                 padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: GridView.count(
