@@ -36,10 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
         'In this session Eric will cover what makes PureScript special as a language, an overview of the tooling, and show a couple examples.'),
     Session(
         'Samaa Elattar',
-        '',
-        'assets/female.png',
+        'Samaa Elattar is a Student in the Architectural Technology Department at St. Clair College. She is also the founder of Sam Designing Network. She has big dreams to change the world using models for education.',
+        'assets/sam.jpg',
         'Using Holograms to Revolutionize the Teaching World',
-        'In this session, Samaa will discuss a hologram project she is working on that will revolutionize the teaching world and help students with courses that need imagination. \n\nThis will allow students to see and interact with everything they get theoretically in books.'),
+        'In this session, Samaa will discuss a hologram project she is working on that will revolutionize the teaching world and help students with courses that need imagination.'),
     Session(
         'John Haldeman',
         'John Haldeman is a data security architect who\'s job it is to analyze and build systems to analyze security event data. Outside of work he is interested in doing the same but with open social data for communities across Ontario and Canada. He was awarded the IBM Champion designation for 2013-2019 for his outstanding contributions to the data security community.',
